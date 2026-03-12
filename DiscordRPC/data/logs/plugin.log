@@ -1,0 +1,155 @@
+[2026-03-12 02:21:55.603] [INFO] [DiscordRPC] Discord Rich Presence loading...
+[2026-03-12 02:23:52.988] [INFO] [DiscordRPC] Discord Rich Presence loading...
+[2026-03-12 02:23:53.048] [INFO] [DiscordRPC] Attempting a new connection
+[2026-03-12 02:23:53.054] [INFO] [DiscordRPC] RPC Connection Started
+[2026-03-12 02:23:53.055] [DEBUG] [DiscordRPC] Connecting to the pipe through the DiscordRPC.IO.ManagedNamedPipeClient
+[2026-03-12 02:23:53.056] [DEBUG] [DiscordRPC] ManagedNamedPipeClient.Connection(-1)
+[2026-03-12 02:23:53.057] [DEBUG] [DiscordRPC] Connection Attempt 0 ()
+[2026-03-12 02:23:53.058] [INFO] [DiscordRPC] Attempting to connect to 'discord-ipc-0'
+[2026-03-12 02:23:53.069] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:23:53.078] [INFO] [DiscordRPC] Discord Rich Presence loaded successfully
+[2026-03-12 02:23:53.080] [INFO] [DiscordRPC] Discord Rich Presence enabled
+[2026-03-12 02:23:53.120] [DEBUG] [DiscordRPC] Waiting for connection...
+[2026-03-12 02:23:53.132] [INFO] [DiscordRPC] Connected to 'discord-ipc-0'
+[2026-03-12 02:23:53.134] [DEBUG] [DiscordRPC] Done. Result: False
+[2026-03-12 02:23:53.135] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:23:53.136] [DEBUG] [DiscordRPC] Connected to the pipe. Attempting to establish handshake...
+[2026-03-12 02:23:53.139] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:23:53.140] [DEBUG] [DiscordRPC] Attempting to establish a handshake...
+[2026-03-12 02:23:53.140] [DEBUG] [DiscordRPC] Sending Handshake...
+[2026-03-12 02:23:53.700] [DEBUG] [DiscordRPC] Setting the connection state to CONNECTING
+[2026-03-12 02:23:53.701] [DEBUG] [DiscordRPC] Connection Established. Starting reading loop...
+[2026-03-12 02:23:53.869] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:23:53.870] [DEBUG] [DiscordRPC] Read 462 bytes
+[2026-03-12 02:23:53.872] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:23:53.874] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:23:53.874] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:23:54.713] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:23:54.804] [INFO] [DiscordRPC] Handling Response. Cmd: Dispatch, Event: Ready
+[2026-03-12 02:23:54.806] [INFO] [DiscordRPC] Connection established with the RPC
+[2026-03-12 02:23:54.806] [DEBUG] [DiscordRPC] Setting the connection state to CONNECTED
+[2026-03-12 02:23:54.823] [INFO] [DiscordRPC] Discord RPC ready for user nyfaria
+[2026-03-12 02:23:54.824] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:23:54.840] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:23:54.847] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:23:54.848] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:23:55.032] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:23:55.032] [DEBUG] [DiscordRPC] Read 330 bytes
+[2026-03-12 02:23:55.033] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:23:55.033] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:23:55.034] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:23:55.864] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:23:55.865] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:23:55.870] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:25:05.241] [INFO] [DiscordRPC] Discord Rich Presence disabled
+[2026-03-12 02:25:05.242] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:25:05.256] [INFO] [DiscordRPC] Discord Rich Presence unloading...
+[2026-03-12 02:25:05.258] [DEBUG] [DiscordRPC] Initiated shutdown procedure
+[2026-03-12 02:25:05.258] [DEBUG] [DiscordRPC] Left main read loop for some reason. Aborting: False, Shutting Down: True
+[2026-03-12 02:25:05.259] [DEBUG] [DiscordRPC] Closing the named pipe.
+[2026-03-12 02:25:05.260] [DEBUG] [DiscordRPC] Setting the connection state to DISCONNECTED
+[2026-03-12 02:25:05.260] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:25:05.261] [DEBUG] [DiscordRPC] Left Main Loop
+[2026-03-12 02:25:05.265] [INFO] [DiscordRPC] Thread Terminated, no longer performing RPC connection.
+[2026-03-12 02:25:05.913] [INFO] [DiscordRPC] Discord Rich Presence loading...
+[2026-03-12 02:25:05.926] [INFO] [DiscordRPC] Attempting a new connection
+[2026-03-12 02:25:05.931] [INFO] [DiscordRPC] RPC Connection Started
+[2026-03-12 02:25:05.931] [DEBUG] [DiscordRPC] Connecting to the pipe through the DiscordRPC.IO.ManagedNamedPipeClient
+[2026-03-12 02:25:05.932] [DEBUG] [DiscordRPC] ManagedNamedPipeClient.Connection(-1)
+[2026-03-12 02:25:05.933] [DEBUG] [DiscordRPC] Connection Attempt 0 ()
+[2026-03-12 02:25:05.934] [INFO] [DiscordRPC] Attempting to connect to 'discord-ipc-0'
+[2026-03-12 02:25:05.934] [DEBUG] [DiscordRPC] Waiting for connection...
+[2026-03-12 02:25:05.936] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:25:05.937] [INFO] [DiscordRPC] Discord Rich Presence loaded successfully
+[2026-03-12 02:25:05.948] [INFO] [DiscordRPC] Connected to 'discord-ipc-0'
+[2026-03-12 02:25:05.949] [DEBUG] [DiscordRPC] Done. Result: False
+[2026-03-12 02:25:05.949] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:25:05.950] [DEBUG] [DiscordRPC] Connected to the pipe. Attempting to establish handshake...
+[2026-03-12 02:25:05.952] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:25:05.953] [DEBUG] [DiscordRPC] Attempting to establish a handshake...
+[2026-03-12 02:25:05.953] [DEBUG] [DiscordRPC] Sending Handshake...
+[2026-03-12 02:25:06.021] [DEBUG] [DiscordRPC] Setting the connection state to CONNECTING
+[2026-03-12 02:25:06.021] [DEBUG] [DiscordRPC] Connection Established. Starting reading loop...
+[2026-03-12 02:25:06.144] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:25:06.145] [DEBUG] [DiscordRPC] Read 462 bytes
+[2026-03-12 02:25:06.146] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:25:06.147] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:25:06.147] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:25:07.026] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:25:07.069] [INFO] [DiscordRPC] Handling Response. Cmd: Dispatch, Event: Ready
+[2026-03-12 02:25:07.070] [INFO] [DiscordRPC] Connection established with the RPC
+[2026-03-12 02:25:07.070] [DEBUG] [DiscordRPC] Setting the connection state to CONNECTED
+[2026-03-12 02:25:07.083] [INFO] [DiscordRPC] Discord RPC ready for user nyfaria
+[2026-03-12 02:25:07.084] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:25:07.097] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:25:07.102] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:25:07.103] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:25:07.108] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:25:07.109] [DEBUG] [DiscordRPC] Read 330 bytes
+[2026-03-12 02:25:07.110] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:25:07.110] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:25:07.110] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:25:08.113] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:25:08.114] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:25:08.118] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:25:12.598] [INFO] [DiscordRPC] Discord Rich Presence enabled
+[2026-03-12 02:25:20.756] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:25:21.247] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:25:21.248] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:25:21.248] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:25:21.252] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:25:21.252] [DEBUG] [DiscordRPC] Read 388 bytes
+[2026-03-12 02:25:21.253] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:25:21.253] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:25:21.253] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:25:22.002] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:25:22.276] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:25:22.277] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:25:22.278] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:25:22.279] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:25:22.279] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:25:22.280] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:25:22.285] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:25:22.286] [DEBUG] [DiscordRPC] Read 407 bytes
+[2026-03-12 02:25:22.286] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:25:22.287] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:25:22.287] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:25:23.286] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:25:23.287] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:25:23.288] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:28:10.188] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:28:10.872] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:28:10.873] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:28:10.873] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:28:10.880] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:28:10.881] [DEBUG] [DiscordRPC] Read 388 bytes
+[2026-03-12 02:28:10.881] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:28:10.882] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:28:10.882] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:28:11.881] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:28:11.881] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:28:11.882] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:28:18.348] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:28:18.961] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:28:18.962] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:28:18.962] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:28:18.994] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:28:18.994] [DEBUG] [DiscordRPC] Read 407 bytes
+[2026-03-12 02:28:18.995] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:28:18.995] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:28:18.996] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:28:19.973] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:28:19.975] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:28:19.975] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
+[2026-03-12 02:28:35.562] [DEBUG] [DiscordRPC] Enqueue Command: DiscordRPC.RPC.Commands.PresenceCommand
+[2026-03-12 02:28:36.225] [DEBUG] [DiscordRPC] Attempting to send payload: SetActivity
+[2026-03-12 02:28:36.226] [DEBUG] [DiscordRPC] Sending payload: SetActivity
+[2026-03-12 02:28:36.227] [DEBUG] [DiscordRPC] Sent Successfully.
+[2026-03-12 02:28:36.253] [DEBUG] [DiscordRPC] Ending Read
+[2026-03-12 02:28:36.253] [DEBUG] [DiscordRPC] Read 388 bytes
+[2026-03-12 02:28:36.254] [DEBUG] [DiscordRPC] Read a frame: Frame
+[2026-03-12 02:28:36.254] [DEBUG] [DiscordRPC] Starting another read
+[2026-03-12 02:28:36.255] [DEBUG] [DiscordRPC] Begining Read of 16384 bytes
+[2026-03-12 02:28:37.233] [DEBUG] [DiscordRPC] Read Payload: Frame
+[2026-03-12 02:28:37.234] [INFO] [DiscordRPC] Handling Response. Cmd: SetActivity, Event: 
+[2026-03-12 02:28:37.235] [DEBUG] [DiscordRPC] Enqueued Message, but queue size is 0.
