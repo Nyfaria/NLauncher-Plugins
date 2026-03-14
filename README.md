@@ -1,393 +1,88 @@
-﻿# NLauncher Plugin Development Guide
+﻿# NLauncher Publishing Guide — Plugins & Themes
 
-Complete guide for creating plugins for NLauncher using the Plugin SDK.
+How to submit plugins and themes to the NLauncher repository for distribution.
 
-## Prerequisites
+- For creating plugins, see [PLUGIN_DEVELOPMENT.md](PLUGIN_DEVELOPMENT.md)
+- For creating themes, see [THEME_DEVELOPMENT.md](THEME_DEVELOPMENT.md)
 
-- .NET 8.0 SDK
-- IDE (Visual Studio, Rider, or VS Code)
-- NLauncher installed (for testing)
+## Overview
 
-## Quick Start
+Plugins and themes are hosted in the [Nyfaria/NLauncher-Plugins](https://github.com/Nyfaria/NLauncher-Plugins) GitHub repository. NLauncher's built-in browser fetches content directly from this repo via the GitHub API.
 
-### 1. Create a New Project
-
-```bash
-dotnet new classlib -n MyPlugin -f net8.0
-cd MyPlugin
-dotnet add package NLauncher.PluginSDK
-```
-
-### 2. Create the Plugin Class
-
-Create `MyPlugin.cs`:
-
-```csharp
-using NLauncher.PluginSDK.Interfaces;
-using NLauncher.PluginSDK.Models;
-
-namespace MyPlugin;
-
-public class MyPlugin : IPlugin
-{
-    private IPluginHost? _host;
-
-    public PluginInfo Info => new()
-    {
-        Id = "my-plugin",
-        Name = "My Plugin",
-        Description = "Does something awesome",
-        Version = "1.0.0",
-        Author = "Your Name"
-    };
-
-    public PluginState State { get; private set; } = PluginState.Unloaded;
-
-    public Task LoadAsync(IPluginHost host)
-    {
-        _host = host;
-        _host.Logger.Info("My plugin loaded!");
-        
-        // Register your UI, subscribe to events, etc.
-        
-        State = PluginState.Loaded;
-        return Task.CompletedTask;
-    }
-
-    public Task UnloadAsync()
-    {
-        State = PluginState.Unloaded;
-        return Task.CompletedTask;
-    }
-
-    public Task EnableAsync()
-    {
-        State = PluginState.Enabled;
-        return Task.CompletedTask;
-    }
-
-    public Task DisableAsync()
-    {
-        State = PluginState.Disabled;
-        return Task.CompletedTask;
-    }
-
-    public void Dispose() { }
-}
-```
-
-### 3. Create plugin.json
-
-Create `plugin.json` in your project root:
-
-```json
-{
-  "id": "my-plugin",
-  "name": "My Plugin",
-  "description": "Does something awesome",
-  "version": "1.0.0",
-  "author": "Your Name",
-  "repository": "https://github.com/YourName/MyPlugin",
-  "minLauncherVersion": "0.2.0",
-  "entryPoint": "MyPlugin.dll",
-  "mainClass": "MyPlugin.MyPlugin",
-  "permissions": [],
-  "dependencies": []
-}
-```
-
-> ⚠️ **Required:** The `repository` field must point to your public GitHub repo for security review.
-
-### 4. Configure Build Output
-
-Add to your `.csproj`:
-
-```xml
-<ItemGroup>
-  <None Update="plugin.json">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </None>
-</ItemGroup>
-```
-
-### 5. Build and Install
-
-```bash
-dotnet build -c Release
-```
-
-Copy the output to test:
-```powershell
-Copy-Item -Path "bin/Release/net8.0/*" -Destination "$env:APPDATA/.nlauncher/plugins/my-plugin/" -Recurse
-```
-
-Restart NLauncher to load your plugin.
+- **Plugins** live in `Plugins/{plugin-id}/` as raw files (DLLs + `plugin.json`)
+- **Themes** live in `Themes/{theme-id}.json` as single JSON files
 
 ---
 
-## Plugin Host Services
+## Submitting Plugins
 
-The `IPluginHost` provides access to launcher functionality:
+1. Fork [Nyfaria/NLauncher-Plugins](https://github.com/Nyfaria/NLauncher-Plugins)
+2. Create a folder: `Plugins/my-plugin/`
+3. Copy your DLLs and `plugin.json` into that folder
+4. Submit a pull request
 
-### Logger
-```csharp
-_host.Logger.Info("Information message");
-_host.Logger.Warn("Warning message");
-_host.Logger.Error("Error message");
-```
+Your `plugin.json` must include a `repository` field pointing to a public GitHub repo — plugins without this are rejected by the browser.
 
-### Events
-```csharp
-// Instance selected
-_host.Events.InstanceSelected.Subscribe(args => {
-    _host.Logger.Info($"Selected: {args.Instance.Name}");
-});
+### Updating Your Plugin
 
-// Game launched
-_host.Events.GameLaunched.Subscribe(args => {
-    _host.Logger.Info($"Launched: {args.Instance.Name}");
-});
+1. Update the `version` in `plugin.json`
+2. Replace the DLLs with the new build
+3. Submit a pull request
 
-// Game closed
-_host.Events.GameClosed.Subscribe(args => {
-    _host.Logger.Info($"Closed: {args.Instance.Name}");
-});
-
-// Theme changed
-_host.Events.ThemeChanged.Subscribe(args => {
-    // Update UI colors from args.Theme
-});
-```
-
-### Instance Service
-```csharp
-// Get currently selected instance
-var instance = await _host.InstanceService.GetSelectedInstanceAsync();
-
-// Get all instances
-var instances = await _host.InstanceService.GetAllInstancesAsync();
-```
-
-### Dialog Service
-```csharp
-// Show message
-await _host.DialogService.ShowMessageAsync("Title", "Message");
-
-// Show confirmation
-bool confirmed = await _host.DialogService.ShowConfirmAsync("Title", "Are you sure?");
-```
-
-### Theme
-```csharp
-var theme = _host.CurrentTheme;
-if (theme != null)
-{
-    var bgColor = theme.BackgroundColor;
-    var textColor = theme.TextColor;
-    var accentColor = theme.AccentColor;
-}
-```
+NLauncher detects updates by comparing the installed version against the repo's `plugin.json` version.
 
 ---
 
-## Registering UI
+## Submitting Themes
 
-### Add a Tab to Instance Panel
+1. Fork [Nyfaria/NLauncher-Plugins](https://github.com/Nyfaria/NLauncher-Plugins)
+2. Add your theme JSON to the `Themes/` folder: `Themes/my-cool-theme.json`
+3. Submit a pull request
 
-```csharp
-public Task LoadAsync(IPluginHost host)
-{
-    _host = host;
-    
-    _host.RegisterInstanceTab(new TabRegistration
-    {
-        Id = "my-tab",
-        Title = "My Tab",
-        Order = 100,  // Lower = appears first
-        ViewFactory = () => new MyTabView(),
-        ViewModelFactory = () => new MyTabViewModel(_host)
-    });
-    
-    State = PluginState.Loaded;
-    return Task.CompletedTask;
-}
-```
-
-### Add a Main Tab
-
-```csharp
-_host.RegisterMainTab(new TabRegistration
-{
-    Id = "my-main-tab",
-    Title = "My Feature",
-    Order = 50,
-    ViewFactory = () => new MyMainView(),
-    ViewModelFactory = () => new MyMainViewModel(_host)
-});
-```
-
-### Add Settings Section
-
-```csharp
-_host.RegisterSettingsSection(new SettingsSectionRegistration
-{
-    Id = "my-settings",
-    Title = "My Plugin Settings",
-    Order = 100,
-    ViewFactory = () => new MySettingsView(),
-    ViewModelFactory = () => new MySettingsViewModel(_host)
-});
-```
+Or use the **Import** button in NLauncher's theme browser and share the JSON file directly.
 
 ---
 
-## Creating Views (Avalonia)
+## Repository Structure
 
-Plugins use Avalonia for UI. You can create views in code or XAML.
-
-### Code-based View
-
-```csharp
-using Avalonia.Controls;
-using Avalonia.Layout;
-
-public class MyTabView : UserControl
-{
-    public MyTabView()
-    {
-        Content = new StackPanel
-        {
-            Spacing = 10,
-            Children =
-            {
-                new TextBlock { Text = "Hello from my plugin!" },
-                new Button { Content = "Click Me" }
-            }
-        };
-    }
-}
+```
+NLauncher-Plugins/
+├── Plugins/
+│   ├── discord-rpc/
+│   │   ├── plugin.json
+│   │   ├── DiscordRPC.dll
+│   │   └── DiscordRPC.deps.json
+│   ├── another-plugin/
+│   │   ├── plugin.json
+│   │   └── AnotherPlugin.dll
+│   └── ...
+├── Themes/
+│   ├── blue.json
+│   ├── my-cool-theme.json
+│   └── ...
+└── README.md
 ```
 
-### Using Theme Colors
+- **`Plugins/`** — Each subfolder is one plugin, containing its DLLs and `plugin.json`.
+- **`Themes/`** — Theme JSON files. Each file is a complete theme.
 
-```csharp
-public class MyTabViewModel
-{
-    private readonly IPluginHost _host;
-    
-    public MyTabViewModel(IPluginHost host)
-    {
-        _host = host;
-        
-        // Subscribe to theme changes
-        _host.Events.ThemeChanged.Subscribe(args => {
-            // Update your UI colors
-        });
-    }
-    
-    public string BackgroundColor => _host.CurrentTheme?.BackgroundColor ?? "#1a0a20";
-    public string TextColor => _host.CurrentTheme?.TextColor ?? "#ffffff";
-}
-```
+Both are discovered directly via the GitHub API — no catalog or index file needed.
 
 ---
 
-## File Storage
+## Security
 
-Store plugin data in the designated directory:
-
-```csharp
-var dataPath = _host.PluginDataDirectory;
-var configFile = Path.Combine(dataPath, "config.json");
-
-// Save
-await File.WriteAllTextAsync(configFile, json);
-
-// Load
-if (File.Exists(configFile))
-{
-    var json = await File.ReadAllTextAsync(configFile);
-}
-```
+- Repository maintainers review all submissions before merging
+- Plugins must include a `repository` field with a public GitHub URL for code review
+- Themes are plain JSON with no executable code — safe by design
 
 ---
 
-## Publishing Your Plugin
+## Troubleshooting
 
-### 1. Push to GitHub
-
-Your plugin source code must be in a public GitHub repository.
-
-### 2. Build Release
-
-```bash
-dotnet build -c Release
-```
-
-### 3. Submit to Plugin Repository
-
-1. Fork https://github.com/Nyfaria/NLauncher-Plugins
-2. Create a folder with your plugin ID
-3. Copy your built files:
-   - `YourPlugin.dll`
-   - `plugin.json`
-   - Any dependencies
-4. Submit a Pull Request
-
-The PR will be automatically scanned for security issues.
-
----
-
-## Best Practices
-
-1. **Use reactive properties** for UI bindings
-2. **Subscribe to theme changes** to keep your UI consistent
-3. **Handle errors gracefully** - don't crash the launcher
-4. **Clean up resources** in `UnloadAsync()` and `Dispose()`
-5. **Log important events** using `_host.Logger`
-6. **Test thoroughly** before publishing
-
----
-
-## Example Plugins
-
-- **TreePackEditor** - Full-featured editor plugin with multiple views
-  - Location: `Plugins/TreePackEditor/`
-  - Demonstrates: Tab registration, file editing, theme support
-
----
-
-## API Reference
-
-### IPlugin Interface
-
-| Method | Description |
-|--------|-------------|
-| `LoadAsync(IPluginHost)` | Called when plugin is loaded |
-| `UnloadAsync()` | Called when plugin is unloaded |
-| `EnableAsync()` | Called when plugin is enabled |
-| `DisableAsync()` | Called when plugin is disabled |
-| `Dispose()` | Clean up resources |
-
-### IPluginHost Properties
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `Logger` | `IPluginLogger` | Logging service |
-| `Events` | `IPluginEvents` | Event subscriptions |
-| `InstanceService` | `IPluginInstanceService` | Instance access |
-| `DialogService` | `IPluginDialogService` | Show dialogs |
-| `FileSystem` | `IPluginFileSystem` | File operations |
-| `CurrentTheme` | `PluginThemeInfo?` | Current theme colors |
-| `PluginDataDirectory` | `string` | Plugin storage path |
-| `LauncherVersion` | `string` | NLauncher version |
-| `IsDebugMode` | `bool` | Debug mode flag |
-
----
-
-## Getting Help
-
-- **Discord:** https://discord.gg/WbNYM68Bkt
-- **SDK Package:** https://www.nuget.org/packages/NLauncher.PluginSDK
-- **Plugin Repository:** https://github.com/Nyfaria/NLauncher-Plugins
-
+| Problem | Solution |
+|---------|----------|
+| Plugin not appearing in browser | Ensure `Plugins/{id}/plugin.json` exists and has a `repository` field |
+| Theme not appearing in browser | Ensure the JSON is valid and has `id`/`name` fields |
+| Theme colors look wrong | Export the default theme and compare — make sure all color keys are present |
+| "Requires restart" after install | Plugin installs require an NLauncher restart to load |
