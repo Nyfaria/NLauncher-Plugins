@@ -1,0 +1,16 @@
+﻿{
+    "id": "tinker-create-and-decorate",
+    "name": "Tinker, Create and Decorate",
+    "description": "A modded Minecraft server featuring Tinkers' Construct, Create, and decoration mods.",
+    "address": "185.236.138.121",
+    "gamePort": 25565,
+    "syncPort": 25580,
+    "website": null,
+    "discord": null,
+    "owner": "Nyfaria",
+    "tags": ["modded", "tinkers-construct", "create", "decoration"],
+    "minecraftVersion": "",
+    "modLoader": "",
+    "featured": false
+}
+
